@@ -39,6 +39,17 @@ void enqueueNode (struct queue* queue, struct node* node) {
     if (isEmpty(queue)) {
         queue->front = queue->rear = node;
     } else {
+        struct node* tempNode = queue->front;
+
+        while (tempNode != NULL) {
+            if (tempNode->id == node->id) {
+                tempNode->data = node->data;
+                free(node);
+                return;
+            }
+            tempNode = tempNode->next;
+        }
+
         queue->rear->next = node;
         queue->rear = node;
     }
