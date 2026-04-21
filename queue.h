@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct queueNode {
     float data;
@@ -15,6 +16,7 @@ struct queue {
     struct queueNode* rear;
 };
 
+bool isEmpty (struct queue* queue);
 struct queue* createQueue();
 void enqueue (struct queue* queue, float data, int id);
 
