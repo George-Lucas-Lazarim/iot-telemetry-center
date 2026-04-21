@@ -15,7 +15,7 @@ struct queue* createQueue() {
     return queue;
 }
 
-void enqueue (struct queue* queue, float data, int id) {
+void enqueueData (struct queue* queue, float data, int id) {
     struct node* newNode = (struct node*) malloc (sizeof(struct node));
 
     if (newNode == NULL) {
@@ -32,6 +32,15 @@ void enqueue (struct queue* queue, float data, int id) {
     } else {
         queue->rear->next = newNode;
         queue->rear = newNode;
+    }
+}
+
+void enqueueNode (struct queue* queue, struct node* node) {
+    if (isEmpty(queue)) {
+        queue->front = queue->rear = node;
+    } else {
+        queue->rear->next = node;
+        queue->rear = node;
     }
 }
 
