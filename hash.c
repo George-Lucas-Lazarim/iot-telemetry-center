@@ -8,3 +8,12 @@ void initTable(struct node** table, int size) {
     
     for (int i=0; i < size; i++) table[i] = NULL;
 }
+
+int hashFunction (int id, int size) {
+    if (size <= 0) {
+        printf("Error! Invalid size");
+        return -1;
+    }
+
+    return id % size;
+}
