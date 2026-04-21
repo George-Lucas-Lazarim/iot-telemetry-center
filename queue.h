@@ -5,21 +5,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-struct queueNode {
+struct node {
     float data;
     int id;
-    struct queueNode* next;
+    struct node* next;
 };
 
 struct queue {
-    struct queueNode* front;
-    struct queueNode* rear;
+    struct node* front;
+    struct node* rear;
 };
 
 bool isEmpty (struct queue* queue);
 struct queue* createQueue();
 void enqueue (struct queue* queue, float data, int id);
-struct queueNode* dequeue (struct queue* queue);
-bool extractAndFree (struct queue* queue, float* data, float* id);
+struct node* dequeue (struct queue* queue);
 
 #endif
