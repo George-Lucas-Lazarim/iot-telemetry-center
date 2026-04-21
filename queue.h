@@ -19,5 +19,6 @@ struct queue {
 bool isEmpty (struct queue* queue);
 struct queue* createQueue();
 void enqueue (struct queue* queue, float data, int id);
+struct queueNode* dequeue (struct queue* queue);
 
 #endif

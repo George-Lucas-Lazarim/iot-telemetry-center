@@ -9,7 +9,7 @@ struct queue* createQueue() {
     if (queue == NULL) {
         printf("Error! Memory allocation failure");
         return NULL;
-    } else if (isEmpty(queue)) return queue;
+    }
 
     queue->front = queue->rear = NULL;
     return queue;
@@ -35,3 +35,18 @@ void enqueue (struct queue* queue, float data, int id) {
     }
 }
 
+struct queueNode* dequeue (struct queue* queue) {
+    if (isEmpty(queue)) {
+        printf("Error! The queue is empty");
+        return NULL;
+    }
+
+    struct queueNode* currentNode = queue->front;
+
+    queue->front = queue->front->next;
+    if (queue->front == NULL) queue->rear = NULL;
+
+    currentNode->next = NULL;
+
+    return currentNode;
+}
