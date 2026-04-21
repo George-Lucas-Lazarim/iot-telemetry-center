@@ -15,7 +15,7 @@ struct queue* createQueue() {
     return queue;
 }
 
-void enqueue (struct queue* queue, float data, int id) {
+void enqueueData (struct queue* queue, float data, int id) {
     struct node* newNode = (struct node*) malloc (sizeof(struct node));
 
     if (newNode == NULL) {
@@ -35,6 +35,26 @@ void enqueue (struct queue* queue, float data, int id) {
     }
 }
 
+void enqueueNode (struct queue* queue, struct node* node) {
+    if (isEmpty(queue)) {
+        queue->front = queue->rear = node;
+    } else {
+        struct node* tempNode = queue->front;
+
+        while (tempNode != NULL) {
+            if (tempNode->id == node->id) {
+                tempNode->data = node->data;
+                free(node);
+                return;
+            }
+            tempNode = tempNode->next;
+        }
+
+        queue->rear->next = node;
+        queue->rear = node;
+    }
+}
+
 struct node* dequeue (struct queue* queue) {
     if (isEmpty(queue)) {
         printf("Error! The queue is empty");
@@ -49,4 +69,17 @@ struct node* dequeue (struct queue* queue) {
     node->next = NULL;
 
     return node;
+}
+
+bool extractAndFree (struct queue* queue, float* data, float* id) {
+    struct node* node = dequeue(queue);
+
+    if (node == NULL) return false;
+
+    *data = node->data;
+    *id = node->id;
+
+    free(node);
+
+    return true;
 }
