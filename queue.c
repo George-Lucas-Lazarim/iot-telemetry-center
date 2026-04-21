@@ -50,3 +50,16 @@ struct queueNode* dequeue (struct queue* queue) {
 
     return currentNode;
 }
+
+bool extractAndFree (struct queue* queue, float* data, float* id) {
+    struct queueNode* node = dequeue(queue);
+
+    if (node == NULL) return false;
+
+    *data = node->data;
+    *id = node->id;
+
+    free(node);
+
+    return true;
+}
