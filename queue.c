@@ -1,12 +1,15 @@
 #include "queue.h"
 
 bool isEmpty (struct queue* queue) {
-    return (queue == NULL);
+    return (queue == NULL || queue->front == NULL);
 }
 
 struct queue* createQueue() {
     struct queue* queue = (struct queue*) malloc (sizeof(struct queue));
-    if (isEmpty(queue)) return queue;
+    if (queue == NULL) {
+        printf("Error! Memory allocation failure");
+        return NULL;
+    } else if (isEmpty(queue)) return queue;
 
     queue->front = queue->rear = NULL;
     return queue;
@@ -31,3 +34,4 @@ void enqueue (struct queue* queue, float data, int id) {
         queue->rear = newNode;
     }
 }
+
