@@ -3,6 +3,7 @@
 
 #include "queue.h"
 
-void initTable(struct node** table, int size);
+void initTable (struct node** table, int size);
+int hashFunction (int id, int size);
 
 #endif
