@@ -26,3 +26,27 @@ struct treeNode* addData (struct treeNode* root, struct node* node) {
         }
     }
 }
+
+void printTreeNode (struct treeNode* root) {
+    if (root == NULL) return;
+
+    printf("\n%.2f: ", root->data);
+    if (root->left != NULL) {
+        printf("%.2f; ", root->left->data);
+    } else {
+        printf("NULL; ");
+    }
+    if (root->right != NULL) {
+        printf("%.2f", root->right->data);
+    } else {
+        printf("NULL");
+    }
+}
+
+void printTree (struct treeNode* root) {
+    if (root == NULL) return;
+
+    printTreeNode(root);
+    printTree(root->left);
+    printTree(root->right);
+}

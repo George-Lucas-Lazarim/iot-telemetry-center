@@ -13,5 +13,7 @@ struct treeNode {
 };
 
 struct treeNode* addData (struct treeNode* root, struct node* node);
+void printTreeNode (struct treeNode* root);
+void printTree (struct treeNode* root);
 
 #endif
